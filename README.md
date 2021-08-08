@@ -1,4 +1,4 @@
-# capstone1
+# Capstone 1
 
 ### Cryptocurrency Tracker
 
