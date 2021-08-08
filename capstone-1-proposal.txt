@@ -8,11 +8,11 @@
 
 - Display current data on most popular cryptocurrencies on a scrolling ticker.
 
-- Display historical data on most popular crytocurrencies through graph (tabs for a few hours to full timeline).  If possible include candlestick option.  Likely require them to favorite a currency to get this feature.  This appears to be a paid feature for most APIs that I have found, so may not be able to do this.
+- **Display historical data on most popular crytocurrencies through graph (tabs for a few hours to full timeline).  If possible include candlestick option.  Likely require them to favorite a currency to get this feature.  This appears to be a paid feature for most APIs that I have found, so may not be able to do this.**
 
 - Allow users to create an account and favorite cryptocurrencies.  These will display persistently on the main page when logged in, along with scrolling ticker, but favorited currency displays will show more detailed information.  I will include some static graphics on the main page showing users what this all looks like to entice them to create an account to gain access to these features.  This way, even if they don't take the time to create an account, they will see what it is capable of at just a quick glance.
 
-- Allow users to create an account and receive updates when cryptocurrencies reach a certain value.  Not sure how to do this yet...
+- **Allow users to create an account and receive updates when cryptocurrencies reach a certain value.  Not sure how to do this yet...**
 
 - Give information on cryptocurrency investments and how the block chain works (guides).  Users will have to agree to a disclaimer that this information is not financial advice and to use any information at their own financial risk before being able to view this information (modal for non logged in users, and logged in users will have had to agree to this to create an account).
 
@@ -26,7 +26,7 @@
 
 3. What data are you planning on using?
 
-- Crytocurrency values, current and historical
+- Crytocurrency values, current **and historical.**
 
 4. Brief outline of approach.
 
@@ -56,4 +56,4 @@ e. What will user flow look like?
 
 f. What features make your site more than CRUD? Do you have any stretch goals?
 
-- Cryptocurrency guides, features, and other information will be static.  The stretch goals are highlighted in pink.
+- Cryptocurrency guides, features, and other information will be static.  The stretch goals are bold in answers 1 and 3.
