@@ -13,7 +13,7 @@
 2. What kind of users will visit your site? In other words, what is the demographic of your users?
    - Anyone interested in cryptocurrencies.
 3. What data are you planning on using?
-   - Crytocurrency values, current #### **and historical.**
+   - Crytocurrency values, current ***and historical.***
 4. Brief outline of approach.
    
    a. What does your database schema look like?
