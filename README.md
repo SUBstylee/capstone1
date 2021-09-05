@@ -4,7 +4,7 @@
 
 ### API - [nomics](https://p.nomics.com/cryptocurrency-bitcoin-api)
 
-**NOTE: current DB schema design is currently at it's simplest form.  It will grow as the project does.**
+**NOTE: current [DB schema](https://github.com/SUBstylee/capstone1/blob/main/CryptoTracker.svg) design is currently at it's simplest form.  It will grow as the project does.**
 
 1. What goal will your website be designed to achieve?
    - Display current data on most popular cryptocurrencies on a scrolling ticker.
