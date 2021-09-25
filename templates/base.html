@@ -7,15 +7,18 @@
     <title>CryptoTracker</title>
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <script src="https://unpkg.com/jquery"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous"></script>
+    {% block script %}
+    {% endblock %}
     <link rel="stylesheet"href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
     <link rel="stylesheet" href="/static/stylesheets/style.css">
     <link rel="shortcut icon" href="/static/favicon.ico">
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+<body class='{% block body_class %}{% endblock %}'>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#"><img class="brand-img" src="../static/images/android-chrome-192x192.png" alt="logo"><span>CryptoTracker</span></a>
+          <a class="navbar-brand" href="/"><img class="brand-img bg-light rounded-circle" src="../static/images/android-chrome-192x192.png" alt="logo"><span>CryptoTracker</span></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -28,15 +31,26 @@
               <li class="nav-item user-links">
                 <a class="nav-link" href="#">Resources</a>
               </li>
+              {% if g.user %}
+              <li class="nav-item">
+                <a class="nav-link" aria-current="page" href="/">My Coins</a>
+              </li>
+              <li class="nav-item user-links">
+                <a class="nav-link" href="/allcoins">All Coins</a>
+              </li>
+              {% endif %}
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                   User
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  {% if not g.user %}
                   <li><a class="dropdown-item" href="/signup">Sign up</a></li>
                   <li><a class="dropdown-item" href="/login">Log in</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="#">Logout</a></li>
+                  {% else %}
+                  <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                  <li><a class="dropdown-item" href="/delete">Delete Account</a></li>
+                  {% endif %}
                 </ul>
               </li>
             </ul>
@@ -44,7 +58,39 @@
           </div>
         </div>
     </nav>
-
+    <div class="hwrap">
+      <h6 class="text-center">(Ticker for Top 10 Cryptocurrencies by Market Cap)</h6>
+      <div class="hmove">
+        {% for obj in api_ticker %}
+        <div class="hitem"><p><span class="ticker-block"><a class="ticker-link" href="/show/{{obj.id}}"><img class="coin-logo" src="{{obj.logo_url}}" alt="logo for {{obj.name}}"> {{obj.name}} <span class="coin-abbr">{{obj.id}}</span></a></span> <span class="ticker-block">${% if obj.price|float > 0.09 %}
+          {{"{:,.2f}".format(obj.price|float)}}
+          {% elif obj.price|float > 0.009 %}
+          {{"{:,.3f}".format(obj.price|float)}}
+          {% elif obj.price|float > 0.0009 %}
+          {{"{:,.4f}".format(obj.price|float)}}
+          {% else %}
+          {{obj.price}}
+          {% endif %}</span>
+          <span class="ticker-block">(
+          {% if obj['1d'].price_change_pct|float*100 > 0 %}
+          <span class="green">  &#8593;
+          {% elif obj['1d'].price_change_pct|float*100 == 0 %}
+          <span class="purple">  
+          {% else %}
+          <span class="red">  &#8595;
+          {% endif %}
+          {{'%0.2f'|format(obj['1d'].price_change_pct|float*100)}}%
+          </span>
+          )</span></p>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+    <div class="container flash-messages text-center mt-3">
+      {% for category, message in get_flashed_messages(with_categories=True) %}
+      <div class="alert alert-{{category}}">{{message}}</div>
+      {% endfor %}
+    </div>
     {% block content %}
     {% endblock %}
 </body>

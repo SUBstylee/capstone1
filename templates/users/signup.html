@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+    <div class="row justify-content-md-center">
+        <div class="col-md-7 col-lg-5">
+            <h2 class="join-message  text-center">Join CryptoTracker!</h2>
+            <form method="POST" id="user_form">
+                {{form.hidden_tag()}}
+                {% for field in form if field.widget.input_type != 'hidden' %}
+                    {% for error in field.errors %}
+                        <span class="text-danger">{{error}}</span>
+                    {% endfor %}
+                    {{ field(placeholder=field.label.text, class='form-control') }}
+                {% endfor %}
+                <input class="form-check-input" type="checkbox" id="agree" name="agree" required>
+                <label for="agree">I understand that any info on this site is NOT investment or financial advice.</label><br>
+                <div class="mx-auto text-center">
+                    <button class="btn btn-primary btn-lg btn-block my-3">Join now!</button><br>
+                    <a href="/login">Already have an account?</a>
+                </div>
+            </form>
+            <h5 class="mt-3 text-center">Due to the time limit between api calls, there is a slight delay between adding a tracked coin, removing it, and viewing individual coin data.</h5>
+        </div>
+    </div>
+
+{% endblock %}

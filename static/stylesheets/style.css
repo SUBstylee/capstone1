@@ -1,3 +1,13 @@
+a {
+    text-decoration: none;
+    color: #aaa;
+}
+
+h6 {
+    margin: 5px 0 -8px;
+    color: rgba(0, 0, 0, 0.2);
+}
+
 .brand-img {
     margin-left: 100px;
     height: 50px;
@@ -6,4 +16,139 @@
 
 .user-links {
     margin-right: 100px;
+}
+
+.coin-logo {
+    height: 30px;
+    width: 30px;
+    background-color: #fff;
+    border-radius: 100%;
+}
+
+.tracked-coin {
+    color: gold;
+}
+
+.untracked-coin {
+    color: #fff;
+}
+
+/************************************ ticker */
+
+.hwrap {
+    overflow: hidden;
+    /* HIDE SCROLL BAR */
+    background: rgba(209, 196, 6, 0.295);
+}
+
+/* (B) MOVING TICKER WRAPPER */
+.hmove {
+    display: flex;
+}
+
+/* (C) ITEMS - INTO A LONG HORIZONTAL ROW */
+.hitem {
+    flex-shrink: 0;
+    width: 20%;
+    box-sizing: border-box;
+    padding-top: 12px;
+    text-align: center;
+}
+
+/* (D) ANIMATION - MOVE ITEMS FROM RIGHT TO LEFT */
+/* 10 ITEMS -200%, CHANGE THIS IF YOU ADD/REMOVE ITEMS */
+@keyframes tickerh {
+    0% {
+        transform: translate3d(100%, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(-200%, 0, 0);
+    }
+}
+
+.hmove {
+    animation: tickerh linear 30s infinite;
+}
+
+.hmove:hover {
+    animation-play-state: paused;
+}
+
+.ticker-link {
+    color: #000;
+}
+
+/************************************* /ticker */
+
+.coin-abbr {
+    font-size: .75em;
+    color: rgb(80, 80, 80);
+    margin: 0 6px;
+}
+
+.red {
+    color: red;
+}
+
+.green {
+    color: green;
+}
+
+.purple {
+    color: purple;
+}
+
+.center {
+    margin: 0 auto;
+    width: 80%;
+}
+
+
+/****************************** sparkline chart */
+
+.sparkline-container {
+    width: 85%;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.sparkline-container p {
+    color: rgba(0, 0, 0, 0.6);
+}
+
+#sparkline-chart {
+    width: 100%;
+}
+
+.desc-card {
+    margin-left: 25px;
+}
+
+/****************************** media queries */
+
+@media screen and (max-width: 1700px) {
+    .ticker-block {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 800px) {
+    .ticker-block {
+        display: block;
+    }
+
+    .hitem {
+        width: 35%;
+    }
+
+    @keyframes tickerh {
+        0% {
+            transform: translate3d(100%, 0, 0);
+        }
+
+        100% {
+            transform: translate3d(-350%, 0, 0);
+        }
+    }
 }

@@ -1,8 +1,5 @@
 '''SQLAlchemy models for CryptoTracker.'''
 
-from datetime import datetime
-from enum import unique
-
 from flask_bcrypt import Bcrypt
 from flask_sqlalchemy import SQLAlchemy
 
@@ -11,7 +8,7 @@ db = SQLAlchemy()
 
 
 class Tracked(db.Model):
-    '''Relationship between users and coins'''
+    '''Mapping relationship between users and coins'''
     __tablename__ = 'tracked'
 
     id = db.Column(
@@ -24,9 +21,9 @@ class Tracked(db.Model):
         db.ForeignKey('users.id', ondelete='cascade'),
     )
 
-    coin_id = db.Column(
-        db.Integer,
-        db.ForeignKey('coins.id', ondelete='cascade'),
+    coin_abbr = db.Column(
+        db.Text,
+        db.ForeignKey('coins.abbr', ondelete='cascade'),
     )
 
 
@@ -37,11 +34,6 @@ class User(db.Model):
     id = db.Column(
         db.Integer,
         primary_key=True,
-    )
-
-    fullname = db.Column(
-        db.Text,
-        nullable=False,
     )
 
     email = db.Column(
@@ -61,27 +53,76 @@ class User(db.Model):
         nullable=False,
     )
 
-    tracking = db.relationship(
-        'Tracking'
+    tracked = db.relationship(
+        'Coin',
+        secondary='tracked'
     )
 
-    class Coin(db.Model):
-        '''Info for each individual coin from api'''
-        __tablename__ = 'coins'
+    def __repr__(self):
+        return f'<User #{self.id}: {self.username}, {self.email}>'
 
-        id = db.Column(
-            db.Integer,
-            primary_key=True,
+    @classmethod
+    def signup(cls, username, email, password):
+        '''Sign up a user
+        Hashes password and adds user to system
+        '''
+
+        hashed_pwd = bcrypt.generate_password_hash(password).decode('UTF-8')
+
+        user = User(
+            username=username,
+            email=email,
+            password=hashed_pwd,
         )
 
-        name = db.Column(
-            db.String,
-            nullable=False,
-            unique=True,
-        )
+        db.session.add(user)
+        db.session.commit()
+        return user
 
-        abbr = db.Column(
-            db.String,
-            nullable=False,
-            unique=True,
-        )
+    @classmethod
+    def authenticate(cls, username, password):
+        '''Find a user with username and password
+
+        This is a class method (call it on the class, not an individual user.)
+        It searches for a user whose password hash matches this password
+        and, if it finds such a user, returns that user object.
+
+        If can't find matching user (or if password is wrong), returns False.
+        '''
+
+        user = cls.query.filter_by(username=username).first()
+
+        if user:
+            is_auth = bcrypt.check_password_hash(user.password, password)
+            if is_auth:
+                return user
+
+        return False
+
+
+class Coin(db.Model):
+    '''Info for each individual coin from api'''
+    __tablename__ = 'coins'
+
+    id = db.Column(
+        db.Integer,
+        primary_key=True,
+    )
+
+    name = db.Column(
+        db.String,
+        nullable=False,
+        unique=True,
+    )
+
+    abbr = db.Column(
+        db.String,
+        nullable=False,
+        unique=True,
+    )
+
+
+def connect_db(app):
+    '''Connect db to Flask app'''
+    db.app = app
+    db.init_app(app)

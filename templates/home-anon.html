@@ -1,0 +1,68 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!-- {% for obj in api_data %}
+    <p>{{obj.rank}}<img class="coin-logo" src="{{obj.logo_url}}" alt="logo for {{obj.name}}">{{obj.name}}<span class="coin-abbr">{{obj.id}}</span>, {{obj.price}}, {{obj.max_supply}}</p>
+{% endfor %} -->
+{% if not g.user %}
+<center><video class="my-4" autoplay loop muted>
+  <source src="../static/video/cryptotracker.mp4" type="video/mp4" />
+  Your browser does not support the video tag.
+</video></center>
+{% endif %}
+
+<h2 class="text-center">Top 100 Cryptocurrencies by Market Cap</h2>
+<table class="center table table-dark table-striped table-hover">
+  <thead>
+    <tr>
+      <th>Rank</th>
+      <th>Name</th>
+      <th>Price</th>
+      <th>1D Change</th>
+      <th>Market Cap</th>
+      <th>Tracked</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for obj in api_data %}
+    <tr>
+      <td>{{obj.rank}}</td>
+      <td><a href="/show/{{obj.id}}"><img class="coin-logo" src="{{obj.logo_url}}" alt="logo for {{obj.name}}"> {{obj.name}} <span class="coin-abbr">{{obj.id}}</span></a></td>
+      <td>$
+        {% if obj.price|float > 0.09 %}
+        {{"{:,.2f}".format(obj.price|float)}}
+        {% elif obj.price|float > 0.009 %}
+        {{"{:,.3f}".format(obj.price|float)}}
+        {% elif obj.price|float > 0.0009 %}
+        {{"{:,.4f}".format(obj.price|float)}}
+        {% else %}
+        {{obj.price}}
+        {% endif %}
+      </td>
+      <td>
+        {% if obj['1d'].price_change_pct|float*100 > 0 %}
+        <span class="green">  &#8593;
+        {% elif obj['1d'].price_change_pct|float*100 < 0 %}
+        <span class="red">  &#8595;
+        {% else %}
+        <span class="purple">
+        {% endif %}
+        {{"{:,.2f}".format(obj['1d'].price_change_pct|float*100)}}%</p></div>
+        </span>
+      <td>${{"{:,}".format(obj.market_cap|int)}}</td>
+      <td>
+        <form method="POST" action="/users/toggle_coin/{{obj.id}}" id="tracked-form">
+          <button class="btn btn-sm">
+            {% if g.user and Tracked.query.filter(Tracked.coin_abbr==obj.id, Tracked.user_id==g.user.id).all() %}
+            <i class="fas fa-star tracked-coin"></i>
+            {% else %}
+            <i class="far fa-star untracked-coin"></i>
+            {% endif %}
+          </button>
+        </form>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
