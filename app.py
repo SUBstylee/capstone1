@@ -247,10 +247,31 @@ def coin_info(abbr):
 #     return render_template('/crypto/get-json.html', api_coin_data1=api_coin_data1.json(), api_coin_data2=api_coin_data2.json(), api_coin_data3=api_coin_data3.json(), api_ticker=ticker().json())
 
 ############################
+# About and Resources
+
+
+@app.route('/about')
+def about_page():
+    '''show about page - general information'''
+    return render_template('about.html', api_ticker=ticker().json())
+
+
+@app.route('/resources')
+def resources_page():
+    '''show resources page - external links
+    requires users to be logged in because some of these resources contain financial/investment advice
+    user needs to agree to disclaimer
+    '''
+    if not g.user:
+        flash('You must create an account and be logged in to do that!', 'danger')
+        return redirect('/signup')
+    return render_template('resources.html', api_ticker=ticker().json())
+
+############################
 # Home and error pages
 
 
-@ app.route('/')
+@app.route('/')
 def homepage():
     '''Shows homepage
 

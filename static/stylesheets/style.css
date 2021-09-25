@@ -3,6 +3,10 @@ a {
     color: #aaa;
 }
 
+a:hover {
+    color: #F73A00;
+}
+
 h6 {
     margin: 5px 0 -8px;
     color: rgba(0, 0, 0, 0.2);
@@ -31,6 +35,15 @@ h6 {
 
 .untracked-coin {
     color: #fff;
+}
+
+.about-card {
+    background: linear-gradient(rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.65)), url(../images/code-world.png) fixed center no-repeat;
+    background-size: cover;
+}
+
+ul {
+    list-style: none;
 }
 
 /************************************ ticker */

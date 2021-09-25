@@ -8,18 +8,18 @@
 <div id="sparkPrices" data-sparkprices='{{api_spark_data[0].prices}}'></div>
 
 
-<div class="row mt-5">
+<div class="row mt-5 mx-auto">
     <div class="col-lg-3">
-      <div class="card desc-card h-100">
-        <img class="card-img-top" src="{{api_coin_data[0].logo_url}}" alt="logo for {{api_coin_data[0].name}}">
+      <div class="card text-white bg-dark h-100">
+        <img class="card-img-top bg-light" src="{{api_coin_data[0].logo_url}}" alt="logo for {{api_coin_data[0].name}}">
         <div class="card-body">
           <h2 class="card-header"><img class="coin-logo" src="{{api_coin_data[0].logo_url}}" alt="logo for {{api_coin_data[0].name}}"> {{api_coin_data[0].name}} <span class="coin-abbr">{{api_coin_data[0].id}}</span></h2>
           <p class="card-text mt-2">Today's {{api_coin_data[0].name}} price is ${% if api_coin_data[0].price|float > 0.09 %}{{"{:,.2f}".format(api_coin_data[0].price|float)}}{% elif api_coin_data[0].price|float > 0.009 %}{{"{:,.3f}".format(api_coin_data[0].price|float)}}{% elif api_coin_data[0].price|float > 0.0009 %}{{"{:,.4f}".format(api_coin_data[0].price|float)}}{% else %}{{api_coin_data[0].price}}{% endif %}, which is {% if api_coin_data[0]['1d'].price_change_pct|float*100 > 0 %}<span class="green">up {% elif api_coin_data[0]['1d'].price_change_pct|float*100 < 0 %}<span class="red">down {% else %}<span class="purple">{% endif %}{{"{:,.2f}".format(api_coin_data[0]['1d'].price_change_pct|float*100)}}% </span>over the last 24 hours. {{api_coin_data[0].name}}'s market cap is ${{"{:,}".format(api_coin_data[0].market_cap|int)}}. 24 hour {{api_coin_data[0].id}} volume is ${{"{:,}".format(api_coin_data[0]['1d'].volume|int)}}. It has a market cap rank of {{api_coin_data[0].rank}} with a circulating supply of {{"{:,}".format(api_coin_data[0].circulating_supply|int)}}{% if api_coin_data[0].max_supply %} and max supply of {{"{:,}".format(api_coin_data[0].max_supply|int)}}{% endif %}.</p>
         </div>
       </div>
     </div>
-    <div class="col-lg-9">
-      <div class="card text-center h-100">
+    <div class="col-lg-9 mt-md-3 mt-lg-0">
+      <div class="card text-center text-white bg-dark h-100">
         <div class="card-body">
             <h2 class="card-header">Price change in last 24 hours*</h2>
             <div class="sparkline-container">
