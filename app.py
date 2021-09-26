@@ -1,14 +1,15 @@
 import os
 
 from flask import Flask, render_template, request, flash, redirect, session, g
-from flask_debugtoolbar import DebugToolbarExtension
+# from flask_debugtoolbar import DebugToolbarExtension
 from sqlalchemy.exc import IntegrityError
 
 from forms import AddUserForm, LoginForm
 from models import db, connect_db, User, Coin, Tracked
+##########################################################################
 # api key is hidden here, make an account at 'nomics' for your own api key
 from apikey import API_KEY
-
+##########################################################################
 import requests
 import datetime
 import time
@@ -24,7 +25,7 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SQLALHEMY_ECHO'] = False
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "654321")
-toolbar = DebugToolbarExtension(app)
+# toolbar = DebugToolbarExtension(app)
 connect_db(app)
 
 
@@ -71,14 +72,6 @@ def do_delete():
 
     db.session.delete(g.user)
     db.session.commit()
-
-
-def do_add_coin():
-    '''adds a coin to user's tracked coins'''
-
-
-def do_remove_coin():
-    '''removes a coin from user's tracked coins'''
 
 
 @app.route('/signup', methods=['GET', 'POST'])
@@ -171,9 +164,11 @@ def toggle_tracked_coin(coin_abbr):
         if coin_abbr == track.abbr:
             g.user.tracked.remove(track)
             db.session.commit()
+            flash('Coin has been removed from your tracked coins.', 'warning')
             return redirect('/allcoins')
     g.user.tracked.extend(toggled)
     db.session.commit()
+    flash('Coin has been added to your tracked coins.', 'success')
     return redirect('/allcoins')
 
 
@@ -188,9 +183,12 @@ def toggle_tracked_coin_off(coin_abbr):
         if coin_abbr == track.abbr:
             g.user.tracked.remove(track)
             db.session.commit()
+            flash('Coin has been removed from your tracked coins.', 'warning')
             return redirect('/')
+    # Probably don't need this, but if somehow an untoggled coin shows up here, this will prevent crash
     g.user.tracked.extend(toggled)
     db.session.commit()
+    flash('Coin has been added to your tracked coins.', 'success')
     return redirect('/')
 ############################
 # Coin routes
