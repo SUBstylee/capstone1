@@ -110,41 +110,78 @@ Password: demouser
 
 ### Navigation Bar
 
-![registration](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/nav.png)
+* The 'Navbar Brand Logo' routes a **LOGGED OUT** user to landing page (Top 100).  A **LOGGED IN** user is routed to their tracked coins.
+* 'About' is about the developer (me).
+* 'Resources' contains useful external links about cryptocurrency, exchanges, and wallets. **LOGGED IN** as some of the links contain financial/investment advice. 
+* 'My Coins' routes a **LOGGED IN** user to their tracked coins.  A **LOGGED OUT** user cannot see this link or access this route.
+* 'All Coins' routes a **LOGGED IN** user to the Top 100 list.  A **LOGGED OUT** user cannot see this link or access this route.
+* 'User' drop down:
+    * **LOGGED OUT**
+        * 'Sign up'
+        * 'Log in'
+    * **LOGGED IN**
+        * 'Logout'
+        * 'Delete Account'
+
+![nav](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/nav.png)
 
 ### Registration and Login
 
+The user registration page collects a minimal amount of information about the user.  This is keeping with the decentralized anonymous nature of cryptocurrencies.
+
+The username and email must be unique, and the password must be six characters or more.  The user must also agree to the disclaimer by activating the checkbox.
+
+User information is stored in the User table, and the password is hashed and salted using BCrypt.
+
 ![registration](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/register.png)
+
+User must use a preregistered username (unique) and correct password to gain access to full site.
 
 ![login](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/login.png)
 
 ### Logout and Delete Account
 
+User can logout on a single click.
+
 ![logout](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/logout.png)
+
+To delete an account, a user must be logged in, and credentials must be correct.  If these parameters are met, user and their tracked coins are dropped from corresponding tables.
 
 ![delete account](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/delete.png)
 
 ### Top 10 Cryptocurrencies Ticker
 
+This is a scrolling ticker that displays the latest information for the top ten cryptocurrencies.  It, like the navigation bar, appears on every route.
+
 ![ticker](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/ticker.png)
 
 ### Top 100 Cryptocurrencies
+
+This is a table that shows the top 100 cryptocurrencies. This appears on the landing page for a **LOGGED OUT** user.  A **LOGGED IN** user will see this in the 'All Coins' route.
 
 ![top 100](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/top.png)
 
 ### User Tracked Coins
 
+This is a table that shows a **LOGGED IN** users tracked coins.  A **LOGGED OUT** user cannot access this route.
+
 ![tracked](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/tracked.png)
 
 ### Detailed Coin Information
+
+This shows detailed information about individual coins.  Only a **LOGGED IN** user has access to these routes.
 
 ![detailed](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/detailed.png)
 
 ### About
 
+This shows information about the developer (me). **LOGGED OUT** and **LOGGED IN** users have access to this route.
+
 ![about](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/about.png)
 
 ### Resources
+
+This contains useful external links about cryptocurrency, exchanges, and wallets. Only a **LOGGED IN** user has access to this route as some of the links contain financial/investment advice.
 
 ![resources](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/resources.png)
 
