@@ -305,7 +305,7 @@ def page_not_found(e):
 
 @app.errorhandler(500)
 def page_not_found(e):
-    return render_template('500.html', api_ticker=ticker().json()), 404
+    return render_template('500.html', api_ticker=ticker().json()), 500
 
 ##############################################################################
 # Turn off all caching in Flask
