@@ -4,7 +4,7 @@
 
 CryptoTracker - designed to provide basic information about the top 100 cryptocurrencies by market cap.
 
-This project was completed in approximately 40 hours as part of the Springboard Software Engineering fellowship program.
+This project was completed in approximately 50 hours as part of the Springboard Software Engineering fellowship program.
 
 ## Table of Contents
 
