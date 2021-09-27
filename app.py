@@ -297,6 +297,16 @@ def homepage():
         time.sleep(1)
         return render_template('home-anon.html', api_data=api_data.json(), api_ticker=ticker().json(), Tracked=Tracked)
 
+
+@app.errorhandler(404)
+def page_not_found(e):
+    return render_template('404.html', api_ticker=ticker().json()), 404
+
+
+@app.errorhandler(500)
+def page_not_found(e):
+    return render_template('500.html', api_ticker=ticker().json()), 404
+
 ##############################################################################
 # Turn off all caching in Flask
 #   (useful for dev; in production, this kind of stuff is typically
