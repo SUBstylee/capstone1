@@ -22,6 +22,7 @@ This project was completed in approximately 40 hours as part of the Springboard 
 4. [Promo/Demo Video](#promodemo-video)
 5. [Demo Account for Site Use](#demo-account-for-site-use)
 6. [Features](#features)
+    * [Navigation Bar](#navigation-bar)
     * [Registration and Login](#registration-and-login)
     * [Logout and Delete Account](#logout-and-delete-account)
     * [Top 10 Cryptocurrencies Ticker](#top-10-cryptocurrencies-ticker)
@@ -107,21 +108,45 @@ Password: demouser
 
 ---
 
+### Navigation Bar
+
+![registration](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/nav.png)
+
 ### Registration and Login
+
+![registration](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/register.png)
+
+![login](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/login.png)
 
 ### Logout and Delete Account
 
+![logout](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/logout.png)
+
+![delete account](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/delete.png)
+
 ### Top 10 Cryptocurrencies Ticker
+
+![ticker](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/ticker.png)
 
 ### Top 100 Cryptocurrencies
 
+![top 100](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/top.png)
+
 ### User Tracked Coins
+
+![tracked](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/tracked.png)
 
 ### Detailed Coin Information
 
+![detailed](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/detailed.png)
+
 ### About
 
+![about](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/about.png)
+
 ### Resources
+
+![resources](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/resources.png)
 
 ## Further Steps
 
