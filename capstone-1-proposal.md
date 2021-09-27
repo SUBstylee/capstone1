@@ -2,6 +2,10 @@
 
 ### Cryptocurrency Tracker
 
+### API - [nomics](https://p.nomics.com/cryptocurrency-bitcoin-api)
+
+**NOTE: current [DB schema](https://github.com/SUBstylee/capstone1/blob/main/CryptoTracker.svg) design is currently at it's simplest form.  It will grow as the project does.**
+
 1. What goal will your website be designed to achieve?
    - Display current data on most popular cryptocurrencies on a scrolling ticker.
    - #### ***Display historical data on most popular crytocurrencies through graph (tabs for a few hours to full timeline).  If possible include candlestick option.  Likely require them to favorite a currency to get this feature.  This appears to be a paid feature for most APIs that I have found, so may not be able to do this.***
