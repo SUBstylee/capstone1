@@ -1,41 +1,194 @@
-# Capstone 1
+# CryptoTracker
 
-### Cryptocurrency Tracker
+![cryptotracker logo](https://jt-cryptotracker.herokuapp.com/static/images/favicon_io/android-chrome-512x512.png)
 
+CryptoTracker - designed to provide basic information about the top 100 cryptocurrencies by market cap.
+
+This project was completed in approximately 40 hours as part of the Springboard Software Engineering fellowship program.
+
+## Table of Contents
+
+---
+
+1. [Technologies Used](#technologies-used)
+    * [Front End](#front-end)
+    * [Back End](#back-end)
+    * [Database](#database)
+    * [API](#api)
+    * [Data](#data)
+    * [Graphic Design](#graphic-design)
+2. [Deployment](#deployment)
+3. [Developer](#developer)
+4. [Promo/Demo Video](#promodemo-video)
+5. [Demo Account for Site Use](#demo-account-for-site-use)
+6. [Features](#features)
+    * [Registration and Login](#registration-and-login)
+    * [Logout and Delete Account](#logout-and-delete-account)
+    * [Top 10 Cryptocurrencies Ticker](#top-10-cryptocurrencies-ticker)
+    * [Top 100 Cryptocurrencies](#top-100-cryptocurrencies)
+    * [User Tracked Coins](#user-tracked-coins)
+    * [Detailed Coin Information](#detailed-coin-information)
+    * [About](#about)
+    * [Resources](#resources)
+1. [Further Steps](#further-steps)
+1. [Local Deployment](#local-deployment)
+1. [Testing](#testing)
+
+## Technologies Used
+
+---
+
+#### Front End:
+
+HTML, HTML Canvas, CSS, BootStrap, JavaScript, Chart.js
+
+#### Back End:
+
+Python, Flask, SQLALchemy, WTForms, BCrypt, Jinja
+
+#### Database:
+
+PostgreSQL
+
+#### API:
+
+#### nomics api (free version)
+
+Get your own free api key: [nomics](https://p.nomics.com/cryptocurrency-bitcoin-api)
+
+View the docs: [nomics docs](https://nomics.com/docs/)
+
+#### Data:
+
+JSON file containing top 300 cryptocurrencies for seeding.  There is code included to update the JSON file in case a new coin comes along that makes the top 100, or an existing coin that is currently around and not on the top 300 gains enough of a market cap to get on the top 100 (unlikely, but possible).  In these two scenarios, update the JSON file and reseed the Coin table (NOT THE User OR Tracked TABLES!).  This should not affect the other tables as the tracked coins are based on coin abbreviation (abbr), not ID, which will persist even if ID changes.  Because of this, even if a coin drops off the top 100, a user already tracking it will continue doing so until they remove it from their tracked coins.
+
+#### Graphic Design:
+
+Photoshop, Illustrator, Camtasia
+
+## Deployment
+
+---
+
+This app is currently deployed on Heroku at [CryptoTracker (https://jt-cryptotracker.herokuapp.com)](https://jt-cryptotracker.herokuapp.com/)
+
+## Developer
+
+---
+
+### [Jeremy Threlfall](https://github.com/SUBstylee)
+
+---
+
+![Jeremy Threlfall](https://jt-cryptotracker.herokuapp.com/static/images/jeremy.png)
+
+[LinkedIn](https://www.linkedin.com/in/jeremy-threlfall/)
+
+Email: [jjthrelfall@gmail.com](mailto:jjthrelfall@gmail.com)
+
+## Promo/Demo Video
+
+---
+
+[Promo/Demo Video of app](https://jt-cryptotracker.herokuapp.com/static/video/cryptotracker.mp4)
 ### API - [nomics](https://p.nomics.com/cryptocurrency-bitcoin-api)
 
-**NOTE: current [DB schema](https://github.com/SUBstylee/capstone1/blob/main/CryptoTracker.svg) design is currently at it's simplest form.  It will grow as the project does.**
+## Demo Account for Site Use
 
-1. What goal will your website be designed to achieve?
-   - Display current data on most popular cryptocurrencies on a scrolling ticker.
-   - #### ***Display historical data on most popular crytocurrencies through graph (tabs for a few hours to full timeline).  If possible include candlestick option.  Likely require them to favorite a currency to get this feature.  This appears to be a paid feature for most APIs that I have found, so may not be able to do this.***
-   - Allow users to create an account and favorite cryptocurrencies.  These will display persistently on the main page when logged in, along with scrolling ticker, but favorited currency displays will show more detailed information.  I will include some static graphics on the main page showing users what this all looks like to entice them to create an account to gain access to these features.  This way, even if they don't take the time to create an account, they will see what it is capable of at just a quick glance.
-   - #### ***Allow users to create an account and receive updates when cryptocurrencies reach a certain value.  Not sure how to do this yet...***
-   - Give information on cryptocurrency investments and how the block chain works (guides).  Users will have to agree to a disclaimer that this information is not financial advice and to use any information at their own financial risk before being able to view this information (modal for non logged in users, and logged in users will have had to agree to this to create an account).
-   - Display latest cryptocurrency news (may have to display headlines and a snippet, then make it so full article opens in a new tab when they click read more...).
-   - Price calculator (fiat to crypto, and vice versa).
-2. What kind of users will visit your site? In other words, what is the demographic of your users?
-   - Anyone interested in cryptocurrencies.
-3. What data are you planning on using?
-   - Crytocurrency values, current ***and historical.***
-4. Brief outline of approach.
-   
-   a. What does your database schema look like?
-      - Database of users, and database containing crytocurrency names.  Connected at which ones have been favorited by which users.
-   
-   b. What kinds of issues might you run into with your API?
-      - Making more than limited number of API calls.
-      - No access to certain types of data, making it so I have to not include certain features without paying.
-   
-   c. Is there any sensitive information you need to secure?
-      - User information (names, passwords, emails) and API key (I will treat it as if it is paid, although I will just use a free API key).
-   
-   d. What functionality will your app include?
-      - See answers to question 1, as they are detailed there.
-   
-   e. What will user flow look like?
-      - User gets to landing page.  Is met with a ticker going by with all the cryptocurrencies supported on API.  This will list the benefits/features of creating an account, but basic information will not require an account to see.
-      - If user logs in or creates an account, can favorite (or remove from favorite) and get more detailed information about whichever cryptocurrencies they favorite.  They can also change their information or delete their account if they want.
-   
-   f. What features make your site more than CRUD? Do you have any stretch goals?
-      - Cryptocurrency guides, features, and other information will be static.  The stretch goals are bold and italic in answers 1 and 3.
+---
+
+This app uses User Registration and Login with Authentication to gain access to all features.  If you do not wish to make an account you can use the demo user account below:
+
+Username: demouser
+
+Password: demouser
+
+## Features
+
+---
+
+### Registration and Login
+
+### Logout and Delete Account
+
+### Top 10 Cryptocurrencies Ticker
+
+### Top 100 Cryptocurrencies
+
+### User Tracked Coins
+
+### Detailed Coin Information
+
+### About
+
+### Resources
+
+## Further Steps
+
+---
+
+I would have liked to make it so that a user could receive a notification when a tracked coin reaches a certain value.  Unfortunately, this would require constant (every few seconds) API calls that would flag my free API key and block.  If I were using a paid API key, then I could accomplish this by implementing an email system or using the Twillio API for sms notifications.
+
+I also would have liked to make the sparkline chart into a candlestick chart, but again, the free version of the nomics API does not provide the information required for this.
+
+I was thinking about requiring more information and allowing users to edit their information, but due to the nature of cryptocurrencies being decentralized, I decided to go minimalistic with data collected about a user.
+
+Any feedback is appreciated.  Feel free to reach out or connect with me using the information listed under [Developer](#developer).
+
+## Local Deployment
+
+---
+
+### Requirements:
+
+Python, Pip, PostgreSQL
+
+### API Key:
+
+Register for a free API key from [nomics](https://p.nomics.com/cryptocurrency-bitcoin-api)
+
+### Deploy locally using Python 3.8.5, pip, and Flask:
+
+Initialize PostgreSQL in your operating system: [WSL2/Linux](https://docs.microsoft.com/en-us/windows/wsl/tutorials/wsl-database), [Mac](https://www.sqlshack.com/setting-up-a-postgresql-database-on-mac/)
+
+Run the following commands in your terminal:
+
+### Clone Repository, Enter Directory of Repo, and Make '`apikey.py`' File With Echo using your API key
+
+`git clone https://github.com/SUBstylee/capstone1.git`
+
+`cd capstone1`
+
+`echo "API_KEY = 'YOUR_API_KEY_HERE'" > apikey.py`
+
+### Create and Activate Python Virtual Environment
+
+`python3 -m venv venv`
+
+`source venv/bin/activate`
+
+`pip3 install -r requirements.txt` or `pip install -r requirements.txt`
+
+### To Set Up Our Local Database:
+
+`createdb cryptotracker`
+
+`python3 seed.py`
+
+### Run Application With Flask
+
+`export FLASK_ENV=production`
+
+`export FLASK_RUN_PORT=8000`
+
+`flask run`
+
+### View Application in your Web Browser
+
+Open the application in your web browser at [http://localhost:8000/](http://localhost:8000/)
+
+## Testing
+
+---
+
+Tests were written for Models and Views using Python's build in [Unit Test](https://docs.python.org/3/library/unittest.html) Framework
