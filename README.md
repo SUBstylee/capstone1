@@ -253,4 +253,4 @@ Open the application in your web browser at [http://localhost:8000/](http://loca
 
 ---
 
-Tests were written for Models and Views using Python's build in [Unit Test](https://docs.python.org/3/library/unittest.html) Framework
+Tests were written for Models and Views using Python's built in [Unit Test](https://docs.python.org/3/library/unittest.html) Framework
