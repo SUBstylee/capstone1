@@ -81,7 +81,7 @@ This app is currently deployed on Heroku at [CryptoTracker (https://jt-cryptotra
 
 ---
 
-![Jeremy Threlfall](https://jt-cryptotracker.herokuapp.com/static/images/jeremy.png)
+![Jeremy Threlfall](https://raw.githubusercontent.com/SUBstylee/capstone1/main/static/images/readme/dev.png)
 
 [LinkedIn](https://www.linkedin.com/in/jeremy-threlfall/)
 
